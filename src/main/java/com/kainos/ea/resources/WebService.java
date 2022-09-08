@@ -1,2 +1,8 @@
-package com.kainos.ea.resources;public class WebService {
+package com.kainos.ea.resources;
+
+import javax.ws.rs.Path;
+
+@Path("/api")
+
+public class WebService {
 }
