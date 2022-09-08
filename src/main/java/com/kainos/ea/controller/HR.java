@@ -2,6 +2,7 @@ package com.kainos.ea.controller;
 
 import com.kainos.ea.model.Employee;
 import com.kainos.ea.resources.EmployeeService;
+import com.kainos.ea.services.SalesEmployeeService;
 import com.kainos.ea.util.DatabaseConnector;
 import io.swagger.annotations.Api;
 import org.eclipse.jetty.http.HttpStatus;
@@ -23,8 +24,6 @@ import java.util.Properties;
 
 public class HR {
     public static DatabaseConnector databaseConnector;
-    private static EmployeeService employeeService;
-
     public static void main(final String[] args) throws SQLException, IOException {
         try {
             Connection c = databaseConnector.getConnection();
@@ -42,66 +41,4 @@ public class HR {
             e.printStackTrace();
         }
     }
-
-    @GET
-    @Path("/print/{msg}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getMsg(@PathParam("msg") String message) {
-        return "O KURWA DZIAŁA? Hello from a RESTful Web service: " + message;
-    }
-    @GET
-    @Path("/employee")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getEmployees() {
-        try {
-            return Response.ok(employeeService.getEmployees(databaseConnector.get)).build();
-        } catch (SQLException e) {
-            System.out.println(e);
-            return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
-        }
-    }
-//
-//        @GET
-//        @Path("/salesEmployee/{salesEmployeeId}")
-//        @Produces(MediaType.APPLICATION_JSON)
-//        public Response getSalesEmployeeById(@PathParam("salesEmployeeId") int salesEmployeeId){
-//            try {
-//                return Response.status(HttpStatus.OK_200).entity(salesEmployeeService.getSalesEmployee(salesEmployeeId)).build();
-//            } catch (SQLException | DatabaseConnectionException e) {
-//                System.out.println(e);
-//                return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
-//            }
-//        }
-//
-//        @POST
-//        @Path("/employee")
-//        @Consumes(MediaType.APPLICATION_JSON)
-//        @Produces(MediaType.APPLICATION_JSON)
-//        public Response createEmployee(EmployeeRequest employee) throws DatabaseConnectionException, SalaryTooLowException, BankNumberLengthException {
-//            if (employeeValidator.isValidEmployee(employee)) {
-//                try {
-//                    int id = employeeService.insertEmployee(employee);
-//                    return Response.status(HttpStatus.CREATED_201).entity(id).build();
-//                } catch (Exception e) {
-//                    System.out.println(e);
-//                    return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
-//                }
-//            } else {
-//                return Response.status(HttpStatus.BAD_REQUEST_400).build();
-//            }
-//        }
-//
-//        @POST
-//        @Path("/salesEmployee")
-//        @Consumes(MediaType.APPLICATION_JSON)
-//        @Produces(MediaType.APPLICATION_JSON)
-//        public Response createSalesEmployee(SalesEmployee salesEmployee) {
-//            try {
-//                salesEmployeeService.insertSalesEmployee(salesEmployee);
-//                return Response.status(HttpStatus.CREATED_201).build();
-//            } catch (SQLException | DatabaseConnectionException e) {
-//                System.out.println(e);
-//                return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
-//            }
-//        }
 }
