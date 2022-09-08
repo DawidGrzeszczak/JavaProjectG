@@ -9,14 +9,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 public class trueConfiguration extends Configuration {
-    // TODO: implement service configuration
     @Valid
     @NotNull
     private final SwaggerBundleConfiguration swagger = new SwaggerBundleConfiguration();
 
     @JsonProperty("swagger")
     public SwaggerBundleConfiguration getSwagger() {
-        swagger.setResourcePackage("com.kainos.ea.resources");
+        swagger.setResourcePackage("com.kainos.ea.controller");
         String[] schemes = {"http", "https"};
         swagger.setSchemes(schemes);
         return swagger;

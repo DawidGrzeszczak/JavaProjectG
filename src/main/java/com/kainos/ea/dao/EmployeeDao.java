@@ -16,6 +16,8 @@ public class EmployeeDao {
         preparedStmt.setString(3, emp1.getNiN());
         preparedStmt.setString(4, emp1.getIBAN());
         preparedStmt.setFloat(5, emp1.getSalary());
+        //preparedStmt.executeUpdate();
+
 
         int affectedRows = preparedStmt.executeUpdate();
 
