@@ -1,6 +1,9 @@
 package com.kainos.ea;
 
+import com.kainos.ea.controller.FinanceMember;
 import com.kainos.ea.controller.HR;
+import com.kainos.ea.controller.Manager;
+import com.kainos.ea.controller.TalentManager;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -32,6 +35,8 @@ public class trueApplication extends Application<trueConfiguration> {
     public void run(final trueConfiguration configuration,
                     final Environment environment) {
         environment.jersey().register(new HR());
+        environment.jersey().register(new FinanceMember());
+        environment.jersey().register(new Manager());
+        environment.jersey().register(new TalentManager());
     }
-
 }

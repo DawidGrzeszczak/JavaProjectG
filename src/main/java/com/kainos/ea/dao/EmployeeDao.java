@@ -16,8 +16,6 @@ public class EmployeeDao {
         preparedStmt.setString(3, emp1.getNiN());
         preparedStmt.setString(4, emp1.getIBAN());
         preparedStmt.setFloat(5, emp1.getSalary());
-        //preparedStmt.executeUpdate();
-
 
         int affectedRows = preparedStmt.executeUpdate();
 
@@ -84,7 +82,7 @@ public class EmployeeDao {
         Statement st = c.createStatement();
 
         ResultSet rs = st.executeQuery(
-                "SELECT * FROM Employees;");
+                "SELECT Salary FROM Employees;");
 
         List<Employee> emps = new ArrayList<>();
 

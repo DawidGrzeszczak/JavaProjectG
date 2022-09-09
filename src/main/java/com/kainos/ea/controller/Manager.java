@@ -18,6 +18,7 @@ import java.sql.SQLException;
 
 @Api("JavaProjectG")
 @Path("/manager")
+
 public class Manager {
 
     private static SalesEmployeeService salesEmployeeService;

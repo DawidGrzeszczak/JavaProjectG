@@ -38,7 +38,7 @@ public class SalesEmployeeDao {
         Statement st = c.createStatement();
 
         ResultSet rs = st.executeQuery(
-                "SELECT * FROM SalesEmployees WHERE TotalValue*CommissionRate = (SELECT MAX(TotalValue * CommissionRate FROM SalesEmployees);");
+                "SELECT * FROM SalesEmployees WHERE TotalValue*CommissionRate = (SELECT MAX(TotalValue * CommissionRate) FROM SalesEmployees);");
 
         while (rs.next()) {
             return new SalesEmployee(
