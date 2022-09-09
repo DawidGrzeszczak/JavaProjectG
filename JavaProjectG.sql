@@ -54,3 +54,4 @@ VALUES
 
 SELECT * FROM SalesEmployees WHERE TotalValue*CommissionRate = (SELECT MAX(TotalValue * CommissionRate FROM SalesEmployees);
 SELECT * FROM Employees WHERE salary = (SELECT MAX(salary) FROM Employees);
+SELECT EmployeeID,Name,Address,(salary/12)*0.75 as grossPay,IBAN,NIN from Employees;
