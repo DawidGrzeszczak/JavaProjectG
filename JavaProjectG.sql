@@ -51,3 +51,6 @@ VALUES
 ('DFG'),
 ('KLM'),
 ('RST');
+
+SELECT * FROM SalesEmployees WHERE TotalValue*CommissionRate = (SELECT MAX(TotalValue * CommissionRate FROM SalesEmployees);
+SELECT * FROM Employees WHERE salary = (SELECT MAX(salary) FROM Employees);
