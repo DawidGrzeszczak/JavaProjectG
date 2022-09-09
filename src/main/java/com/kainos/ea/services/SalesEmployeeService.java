@@ -1,11 +1,13 @@
 package com.kainos.ea.services;
 
 import com.kainos.ea.dao.SalesEmployeeDao;
+import com.kainos.ea.model.Employee;
 import com.kainos.ea.model.SalesEmployee;
 import com.kainos.ea.util.DatabaseConnector;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class SalesEmployeeService {
     public SalesEmployeeDao salesEmployeeDao;
@@ -22,5 +24,9 @@ public class SalesEmployeeService {
 
     public SalesEmployee getSalesEmployee(int employeeId) throws SQLException, IOException {
         return salesEmployeeDao.getSalesEmployee(employeeId, databaseConnector.getConnection());
+    }
+
+    public SalesEmployee getTotalSales() throws SQLException, IOException {
+        return salesEmployeeDao.getTotalSales(databaseConnector.getConnection());
     }
 }

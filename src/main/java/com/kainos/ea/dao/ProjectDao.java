@@ -2,17 +2,13 @@ package com.kainos.ea.dao;
 
 import com.kainos.ea.model.Employee;
 import com.kainos.ea.model.Project;
+import com.kainos.ea.model.SalesEmployee;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectDao {
-
-
 
     public Project getProject(int projectId, Connection c) throws SQLException {
         Statement st = c.createStatement();
@@ -32,6 +28,7 @@ public class ProjectDao {
         }
         return null;
     }
+
     public List<Project> getProjects(Connection c) throws SQLException {
         Statement st = c.createStatement();
 

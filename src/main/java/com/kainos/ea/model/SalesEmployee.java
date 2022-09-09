@@ -23,9 +23,10 @@ public class SalesEmployee extends Employee{
 
     @JsonCreator
     public SalesEmployee(
+            @JsonProperty("employeeId") int employeeId,
             @JsonProperty("commissionRate") float commissionRate,
-            @JsonProperty("totalSales") int totalSales,
-            @JsonProperty("employeeId") int employeeId) {
+            @JsonProperty("totalSales") int totalSales)
+    {
         super(employeeId);
         this.setCommissionRate(commissionRate);
         this.setTotalSales(totalSales);

@@ -44,7 +44,7 @@ public class HR {
     @GET
     @Path("/employee/{employeeId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getEmployeeById(@PathParam("employeeId") int employeeId) {
+    public Response getEmployee(@PathParam("employeeId") int employeeId) {
         try {
             return Response.status(HttpStatus.OK_200).entity(employeeService.getEmployee(employeeId)).build();
         } catch (SQLException | IOException e) {
@@ -56,7 +56,7 @@ public class HR {
     @GET
     @Path("/salesEmployee/{salesEmployeeId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getSalesEmployeeById(@PathParam("salesEmployeeId") int salesEmployeeId){
+    public Response getSalesEmployee(@PathParam("salesEmployeeId") int salesEmployeeId){
         try {
             return Response.status(HttpStatus.OK_200).entity(salesEmployeeService.getSalesEmployee(salesEmployeeId)).build();
         } catch (SQLException | IOException e) {

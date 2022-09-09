@@ -30,4 +30,8 @@ public class EmployeeService {
     public List<Employee> getEmployees() throws SQLException, IOException {
         return employeeDao.getEmployees(databaseConnector.getConnection());
     }
+
+    public List<Employee> getGrossPay() throws SQLException, IOException {
+        return employeeDao.getGrossPay(databaseConnector.getConnection());
+    }
 }

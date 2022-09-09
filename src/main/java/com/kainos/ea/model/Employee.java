@@ -13,9 +13,6 @@ public class Employee implements Comparable<Employee>, Serializable {
     private String IBAN;
     private float Salary;
 
-    public Employee(String name) {
-        setName(name);
-    }
 
     public int getEmployeeId() { return EmployeeId; }
     public void setEmployeeId(int employeeId) { EmployeeId = employeeId; }

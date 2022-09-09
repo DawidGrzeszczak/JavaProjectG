@@ -12,9 +12,8 @@ public class Project {
         setName(name);
     }
 
-    public Project(int employeeId, String name) {
-        setEmployeeId(employeeId);
-        setName(name);
+    public Project(int projectId) {
+        setProjectId(projectId);
     }
 
     public int getProjectId() { return ProjectId; }
@@ -28,8 +27,8 @@ public class Project {
 
     @JsonCreator
     public Project(
-            @JsonProperty("Name") String name,
-            @JsonProperty("employeeId") int employeeId)
+            @JsonProperty("employeeId") int employeeId,
+            @JsonProperty("Name") String name)
     {
         this.setEmployeeId(employeeId);
         this.setName(name);

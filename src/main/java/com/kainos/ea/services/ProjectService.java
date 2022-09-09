@@ -2,6 +2,7 @@ package com.kainos.ea.services;
 
 import com.kainos.ea.dao.ProjectDao;
 import com.kainos.ea.model.Employee;
+import com.kainos.ea.model.InsertEmployee;
 import com.kainos.ea.model.Project;
 import com.kainos.ea.util.DatabaseConnector;
 
@@ -16,6 +17,10 @@ public class ProjectService {
     public ProjectService(ProjectDao projectDao, DatabaseConnector databaseConnector) {
         this.projectDao = projectDao;
         this.databaseConnector = databaseConnector;
+    }
+
+    public Project getProject(int projectId) throws SQLException, IOException {
+        return projectDao.getProject(projectId, databaseConnector.getConnection());
     }
 
     public List<Project> getProjects() throws SQLException, IOException {

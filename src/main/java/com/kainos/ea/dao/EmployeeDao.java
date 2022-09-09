@@ -79,4 +79,26 @@ public class EmployeeDao {
         }
         return emps;
     }
+
+    public List<Employee> getGrossPay(Connection c) throws SQLException {
+        Statement st = c.createStatement();
+
+        ResultSet rs = st.executeQuery(
+                "SELECT * FROM Employees;");
+
+        List<Employee> emps = new ArrayList<>();
+
+        while (rs.next()) {
+            Employee emp = new Employee(
+                    rs.getString("Name"),
+                    rs.getString("Address"),
+                    rs.getString("NIN"),
+                    rs.getString("IBAN"),
+                    rs.getFloat("Salary")
+            );
+            emp.setEmployeeId(rs.getInt("EmployeeId"));
+            emps.add(emp);
+        }
+        return emps;
+    }
 }
