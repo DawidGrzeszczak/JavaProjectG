@@ -1,9 +1,11 @@
 package com.kainos.ea.controller;
 
+import com.kainos.ea.dao.CityDao;
 import com.kainos.ea.dao.EmployeeDao;
 import com.kainos.ea.dao.SalesEmployeeDao;
 import com.kainos.ea.model.InsertEmployee;
 import com.kainos.ea.model.SalesEmployee;
+import com.kainos.ea.services.CityService;
 import com.kainos.ea.services.EmployeeService;
 import com.kainos.ea.services.SalesEmployeeService;
 import com.kainos.ea.util.DatabaseConnector;
@@ -22,11 +24,25 @@ import java.sql.*;
 public class HR {
     private static EmployeeService employeeService;
     private static SalesEmployeeService salesEmployeeService;
+    private static CityService cityService;
 
     public HR() {
         DatabaseConnector databaseConnector = new DatabaseConnector();
         employeeService = new EmployeeService(new EmployeeDao(), databaseConnector);
         salesEmployeeService = new SalesEmployeeService(new SalesEmployeeDao(), databaseConnector);
+        cityService = new CityService(new CityDao(), databaseConnector);
+    }
+
+    @GET
+    @Path("/cities")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCities() {
+        try {
+            return Response.ok(cityService.getCities()).build();
+        } catch (SQLException | IOException e) {
+            System.out.println(e);
+            return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
+        }
     }
 
     @GET

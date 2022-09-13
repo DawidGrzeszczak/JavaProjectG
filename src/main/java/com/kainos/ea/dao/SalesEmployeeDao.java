@@ -4,6 +4,7 @@ import com.kainos.ea.model.Employee;
 import com.kainos.ea.model.SalesEmployee;
 
 import java.sql.*;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +21,13 @@ public class SalesEmployeeDao {
 
     public SalesEmployee getSalesEmployee(int employeeId, Connection c) throws SQLException {
         Statement st = c.createStatement();
+        //String query = MessageFormat.format("SELECT Employees.EmployeeID, CommissionRate, TotalValue, Employees.salary, Employees.NIN, Employees.address, Employees.IBAN FROM SalesEmployees WHERE Employees.EmployeeID = SalesEmployees.EmployeeID AND SalesEmployees.EmployeeID = {0};", employeeId);
+        
+        //ResultSet rs = st.executeQuery(query);
+
 
         ResultSet rs = st.executeQuery(
                 "SELECT * FROM SalesEmployees WHERE EmployeeId = " + employeeId + ";");
-
 
         while (rs.next()) {
             return new SalesEmployee(
